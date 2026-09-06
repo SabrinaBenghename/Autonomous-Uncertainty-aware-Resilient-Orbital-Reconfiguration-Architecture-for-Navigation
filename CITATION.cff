@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite the AURORA repository."
+title: "AURORA: Resilient Autonomous Spacecraft Navigation"
+type: software
+authors:
+  - family-names: "AUTHOR_SURNAME"
+    given-names: "AUTHOR_GIVEN_NAME"
+version: "0.1.0"
+date-released: "2026-09-06"
+repository-code: "REPOSITORY_URL"
+abstract: >-
+  Simulation-driven research project for resilient autonomous spacecraft
+  navigation under simultaneous GNSS and star-tracker outages, including
+  controlled estimator-maturity interventions and empirical resilience-envelope
+  analysis.
+keywords:
+  - spacecraft navigation
+  - GNSS
+  - extended Kalman filter
+  - resilience
+  - fault detection
+  - star tracker
+  - autonomous navigation
+license: "NOASSERTION"

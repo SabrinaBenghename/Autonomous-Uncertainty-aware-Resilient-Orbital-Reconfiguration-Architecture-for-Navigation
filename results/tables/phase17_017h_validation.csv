@@ -1,0 +1,2 @@
+design_valid,all_runs_complete,unique_keys,all_cells_have_8,fixed_start_valid,age_identity_valid,phase_fixed_valid,core_metrics_finite,time_sync_valid,global_validation
+True,True,True,True,True,True,True,True,True,True

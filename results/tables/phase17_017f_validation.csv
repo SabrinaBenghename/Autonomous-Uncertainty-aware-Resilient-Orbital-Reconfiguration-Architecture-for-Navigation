@@ -1,0 +1,2 @@
+design_valid,all_runs_complete,unique_keys,all_ages_complete,all_replicates_cover_all_ages,fixed_phase_valid,fixed_outage_valid,age_start_identity_valid,control_interface_consistent,all_core_metrics_finite,time_sync_valid,global_validation
+True,True,True,True,True,True,True,True,True,True,True,True

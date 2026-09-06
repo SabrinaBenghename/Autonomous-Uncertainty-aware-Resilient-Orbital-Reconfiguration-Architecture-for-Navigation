@@ -1,0 +1,2 @@
+run_count_valid,unique_keys_valid,timings_valid,replicates_per_timing_valid,primary_metrics_finite,convergence_fit_valid,global_validation
+True,True,True,True,True,True,True

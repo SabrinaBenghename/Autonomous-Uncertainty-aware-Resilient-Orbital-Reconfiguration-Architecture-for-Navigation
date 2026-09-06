@@ -1,0 +1,2 @@
+model,sigma_floor_m,amplitude_m,tau_min,r_squared,time_to_10_percent_excess_min,fit_valid
+sigma(t) = sigma_floor + amplitude * exp(-t/tau),0.25726204435457706,0.8770302836876623,34.2617902807873,0.9837336161661346,78.89068755982913,True

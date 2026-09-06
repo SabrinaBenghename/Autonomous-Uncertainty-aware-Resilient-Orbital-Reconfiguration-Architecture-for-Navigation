@@ -1,0 +1,7 @@
+outage_duration_min,metric,friedman_statistic,p_value,kendalls_w,significant_0p05
+15.0,outage_rmse_m,9.75,0.007635094218859962,0.609375,True
+15.0,outage_end_error_m,9.75,0.007635094218859962,0.609375,True
+15.0,outage_end_sigma_m,16.0,0.0003354626279025119,1.0,True
+30.0,outage_rmse_m,7.75,0.020754337873699735,0.484375,True
+30.0,outage_end_error_m,9.0,0.011108996538242308,0.5625,True
+30.0,outage_end_sigma_m,16.0,0.0003354626279025119,1.0,True

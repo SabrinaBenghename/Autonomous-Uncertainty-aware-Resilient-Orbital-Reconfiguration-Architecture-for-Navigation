@@ -1,0 +1,2 @@
+inputs_nonempty,envelope_nonempty,required_columns_present,primary_metrics_finite,reference_valid,contains_multiple_ages,contains_multiple_durations,global_validation
+True,True,True,True,True,True,True,True

@@ -1,0 +1,8 @@
+predictor,outcome,n_valid,spearman_rho,p_value,significant_0p05
+pre_outage_pdop,outage_rmse_m,64,-0.15888278388278387,0.20984423532464996,False
+pre_outage_pdop,outage_end_error_m,64,-0.14546703296703295,0.2514175883799222,False
+pre_outage_pdop,post_recovery_rmse_m,32,0.3020527859237536,0.09292009693628647,False
+natural_visible_satellites_mean,outage_rmse_m,64,-0.2584056970608509,0.03924013422137316,True
+pre_outage_rmse_m,outage_rmse_m,40,0.11857410881801128,0.46616980781499373,False
+outage_start_sigma_m,outage_rmse_m,64,0.7543040293040293,6.180661618964079e-13,True
+outage_start_sigma_m,outage_end_error_m,64,0.7530219780219779,7.111500448821568e-13,True

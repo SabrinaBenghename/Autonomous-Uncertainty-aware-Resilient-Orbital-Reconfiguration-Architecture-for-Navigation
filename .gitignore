@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Local logs
+*.log
+
+# Temporary exports
+tmp/
+temp/
+*.tmp
+
+# Large/local simulation artifacts
+results/raw/
+data/raw/
+checkpoints/
+
+# Keep selected Phase 17 tables/figures tracked
+!results/tables/
+!results/figures/

@@ -1,0 +1,8 @@
+experiment,question,result,role_in_final_story
+017-C,Does initial orbital phase materially change fixed-outage resilience?,No statistically significant phase dependence detected in the tested sweep.,Rules out initial phase as a dominant explanation for the tested fixed-outage case.
+017-D,Does outage timing change resilience?,Strong timing dependence detected.,Reveals that when the outage occurs matters strongly.
+017-E,Is timing dependence consistent with estimator maturity?,"Strong observational consistency, but mission time and covariance were confounded.",Motivates controlled maturity intervention.
+017-F,Does controlled estimator maturity affect resilience?,Yes; maturity significantly changes outage RMSE and end-of-outage error at fixed outage timing.,Confirms estimator maturity as an important mechanism.
+017-G,How does outage duration affect a mature estimator?,Loaded from completed 017-G campaign.,Defines duration-dependent degradation.
+017-H,How do estimator maturity and long outage duration combine under stress?,Loaded from completed 017-H campaign.,Tests combined stress and interaction-like behavior.
+017-I,What empirical resilience envelope is supported by the completed evidence?,Observed conditions classified by relative empirical degradation; no absolute safety certification claimed.,Produces final project-level resilience map.

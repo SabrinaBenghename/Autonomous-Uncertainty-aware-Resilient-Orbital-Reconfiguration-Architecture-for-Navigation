@@ -1,0 +1,8 @@
+predictor,outcome,predictor_label,outcome_label,n,spearman_rho,p_value,significant_0p05
+experiment_outage_start_min,outage_start_sigma_m,Mission time,Estimator sigma,64,-0.9214008855198343,3.876592873091305e-27,True
+experiment_outage_start_min,outage_rmse_m,Mission time,Outage RMSE,64,-0.7604510513505042,3.116501746828341e-13,True
+experiment_outage_start_min,outage_end_error_m,Mission time,End-of-outage error,64,-0.7556520884050882,5.328068440508562e-13,True
+outage_start_sigma_m,outage_rmse_m,Estimator sigma,Outage RMSE,64,0.7543040293040293,6.180661618964079e-13,True
+outage_start_sigma_m,outage_end_error_m,Estimator sigma,End-of-outage error,64,0.7530219780219779,7.111500448821568e-13,True
+pre_outage_pdop,outage_rmse_m,PDOP,Outage RMSE,64,-0.15888278388278387,0.20984423532464996,False
+natural_visible_satellites_mean,outage_rmse_m,Visible satellites,Outage RMSE,64,-0.2584056970608509,0.03924013422137316,True

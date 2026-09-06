@@ -1,0 +1,2 @@
+design_valid,all_runs_complete,unique_keys,all_durations_present,all_replicates_per_duration,fixed_outage_start_valid,fixed_estimator_start_valid,fixed_phase_valid,core_metrics_finite,recovery_metrics_finite,time_sync_valid,start_sigma_invariant,global_validation
+True,True,True,True,True,True,True,True,True,True,True,True,True

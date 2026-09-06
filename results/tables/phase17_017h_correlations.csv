@@ -1,0 +1,7 @@
+predictor,outcome,n,spearman_rho,p_value,significant_0p05
+experiment_estimator_age_min,outage_rmse_m,48,-0.7054184594948533,2.162109727274994e-08,True
+experiment_estimator_age_min,outage_end_error_m,48,-0.6888420466085513,6.218274025930249e-08,True
+experiment_outage_duration_min,outage_rmse_m,48,0.29174548694090124,0.04422018784490508,True
+experiment_outage_duration_min,outage_end_error_m,48,0.29174548694090124,0.04422018784490508,True
+outage_start_sigma_m,outage_rmse_m,48,0.6211167949637862,2.4715545763441035e-06,True
+outage_start_sigma_m,outage_end_error_m,48,0.6384967682401428,1.0460757428025645e-06,True

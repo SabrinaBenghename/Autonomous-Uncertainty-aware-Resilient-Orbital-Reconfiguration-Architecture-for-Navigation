@@ -1,0 +1,5 @@
+predictor,outcome,n,spearman_rho,p_value,significant_0p05
+experiment_outage_duration_min,outage_rmse_m,40,0.49311393292450956,0.0012252649454738522,True
+experiment_outage_duration_min,outage_end_error_m,40,0.578872877780946,9.111727948114735e-05,True
+experiment_outage_duration_min,outage_end_sigma_m,40,0.9801022269307021,2.702871472863375e-28,True
+experiment_outage_duration_min,post_recovery_rmse_m,40,0.11944995890717934,0.46285933744661634,False
