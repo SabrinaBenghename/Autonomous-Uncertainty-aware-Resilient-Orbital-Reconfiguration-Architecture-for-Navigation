@@ -13,11 +13,17 @@ Autonomous Uncertainty-aware Resilient Orbital Reconfiguration Architecture for 
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-Scientific%20Computing-blue">
-  <img src="https://img.shields.io/badge/Domain-Spacecraft%20Navigation-black">
-  <img src="https://img.shields.io/badge/Estimation-EKF%20%2B%20MEKF-purple">
-  <img src="https://img.shields.io/badge/Resilience-FDIR-red">
-  <img src="https://img.shields.io/badge/Validation-Monte%20Carlo-green">
+  <code>Python</code>
+  &nbsp;•&nbsp;
+  <code>Scientific Computing</code>
+  &nbsp;•&nbsp;
+  <code>Spacecraft Navigation</code>
+  &nbsp;•&nbsp;
+  <code>EKF / MEKF</code>
+  &nbsp;•&nbsp;
+  <code>FDIR</code>
+  &nbsp;•&nbsp;
+  <code>Monte Carlo Validation</code>
 </p>
 
 ---
@@ -704,13 +710,13 @@ End error:        0.458 m
 
 | Band | Definition |
 |---|---:|
-| 🟢 **LOW** | ≤ 2× reference |
-| 🟡 **MODERATE** | > 2× and ≤ 5× reference |
-| 🔴 **HIGH** | > 5× reference |
+| **LOW** | ≤ 2× reference |
+| **MODERATE** | > 2× and ≤ 5× reference |
+| **HIGH** | > 5× reference |
 
 ---
 
-## 🟢 Lowest Tested Degradation
+## Lowest Tested Degradation
 
 ```text
 Estimator age:     60 min
@@ -722,7 +728,7 @@ End error:        0.458 m
 
 ---
 
-## 🔴 Highest Tested Degradation
+## Highest Tested Degradation
 
 ```text
 Estimator age:      5 min
@@ -897,14 +903,21 @@ docs/REPRODUCIBILITY.md
 # 🧰 Technology Stack
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-Scientific%20Computing-blue">
-  <img src="https://img.shields.io/badge/NumPy-Numerical%20Methods-4D77CF">
-  <img src="https://img.shields.io/badge/SciPy-Statistics-8CAAE6">
-  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458">
-  <img src="https://img.shields.io/badge/Matplotlib-Visualization-orange">
-  <img src="https://img.shields.io/badge/EKF-Navigation-purple">
-  <img src="https://img.shields.io/badge/MEKF-Attitude-purple">
-  <img src="https://img.shields.io/badge/FDIR-Resilience-red">
+  <code>Python</code>
+  &nbsp;•&nbsp;
+  <code>NumPy</code>
+  &nbsp;•&nbsp;
+  <code>SciPy</code>
+  &nbsp;•&nbsp;
+  <code>Pandas</code>
+  &nbsp;•&nbsp;
+  <code>Matplotlib</code>
+  &nbsp;•&nbsp;
+  <code>EKF</code>
+  &nbsp;•&nbsp;
+  <code>MEKF</code>
+  &nbsp;•&nbsp;
+  <code>FDIR</code>
 </p>
 
 ### Scientific Computing
