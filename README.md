@@ -1,68 +1,196 @@
+<h1 align="center">🛰️ AURORA</h1>
 
+<h3 align="center">
+Autonomous Uncertainty-aware Resilient Orbital Reconfiguration Architecture for Navigation
+</h3>
 
+<p align="center">
+  <b>Resilient Spacecraft Navigation • Sensor-Outage Analysis • Estimator Maturity • Fault-Tolerant Autonomy</b>
+</p>
 
-🛰️ AURORA — Autonomous Uncertainty-aware Resilient Orbital Reconfiguration Architecture for Navigation
-Resilient Spacecraft Navigation • GNSS / Star-Tracker Outages • Estimator Maturity • Fault-Tolerant Autonomy
-Built to navigate. Tested under sensor loss. Designed to remain measurable, interpretable, and resilient.
+<p align="center">
+  <i>Built to navigate. Tested under sensor loss. Designed to understand why resilience fails.</i>
+</p>
 
-A simulation-based spacecraft navigation research platform combining orbital dynamics, GNSS navigation, inertial propagation, attitude estimation, fault detection and isolation (FDIR), resilience management, and controlled Monte Carlo experimentation.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-Scientific%20Computing-blue">
+  <img src="https://img.shields.io/badge/Domain-Spacecraft%20Navigation-black">
+  <img src="https://img.shields.io/badge/Estimation-EKF%20%2B%20MEKF-purple">
+  <img src="https://img.shields.io/badge/Resilience-FDIR-red">
+  <img src="https://img.shields.io/badge/Validation-Monte%20Carlo-green">
+</p>
 
-🎥 Research Visuals
-🧭 Empirical Resilience Envelope
-The final Phase 17 experiment combines completed maturity and outage-duration campaigns into a compact empirical degradation map.
+---
 
-<p align="center"> <img src="results/figures/phase17_017i_resilience_envelope_rmse.png" width="850"> </p>
+<p align="center">
+AURORA is a simulation-based spacecraft navigation research platform integrating
+<b>orbital dynamics</b>, <b>GNSS navigation</b>, <b>inertial propagation</b>,
+<b>attitude estimation</b>, <b>fault detection and isolation</b>,
+<b>resilience management</b>, and <b>controlled Monte Carlo experimentation</b>.
+</p>
 
-The envelope is relative to the best tested reference condition and is intended as a descriptive research result — not a certification or mission-safety boundary.
+---
 
-⏱️ Estimator Maturity vs. Dual-Sensor Outage
-A central finding of the project is that outage severity depends strongly on the maturity of the navigation estimator when the outage begins.
+# 🎥 Research Highlights
 
-<p align="center"> <img src="results/figures/phase17_017h_maturity_duration_rmse.png" width="850"> </p>
+## 🧪 Controlled Estimator-Maturity Experiment
 
-This controlled experiment separates estimator age from mission time and tests how maturity changes resilience under both nominal and prolonged outages.
+A central result of AURORA is that the same physical sensor outage can produce very different navigation errors depending on how mature the navigation estimator is when the outage begins.
 
-📉 Outage Duration Response
-With a mature estimator held fixed, longer simultaneous GNSS + star-tracker outages produce systematic increases in in-outage navigation error.
+<p align="center">
+  <img src="results/figures/phase17_017f_age_vs_start_sigma.png" width="800">
+</p>
 
-<p align="center"> <img src="results/figures/phase17_017g_duration_vs_outage_rmse.png" width="850"> </p>
+The physical outage was fixed at:
 
-📡 Orbital GNSS Geometry
-The project also evaluates how orbital geometry affects GNSS visibility, dilution of precision, and the navigation conditions preceding resilience events.
+```text
+60–75 min
+```
 
-<p align="center"> <img src="results/figures/phase17_017a_pdop_vs_altitude.png" width="850"> </p>
+while navigation-estimator age was varied:
 
-🔬 Research Motivation
-Autonomous spacecraft navigation systems depend on multiple sources of absolute and relative state information.
+```text
+5, 15, 30, 45, 60 min
+```
 
-A navigation architecture that performs well during nominal sensor availability may behave very differently when:
+Mean outage RMSE decreased from approximately:
 
-GNSS measurements become unavailable,
+```text
+4.48 m  →  0.80 m
+```
 
-star-tracker updates are lost,
+between the youngest and most mature tested estimator conditions.
 
-the navigation filter is still converging,
+That corresponds to an approximately:
 
-the outage occurs early or late in the mission,
+```text
+82% reduction
+```
 
-the outage lasts longer than expected,
+in mean outage RMSE.
 
-or the estimator enters the outage with elevated uncertainty.
+---
 
-AURORA was developed to study these conditions systematically rather than treating outage resilience as a single yes/no property.
+## ⌛ Outage-Duration Response
 
-The core idea is to move from “does the system survive an outage?” toward “which internal and external conditions determine how severely navigation degrades during the outage?”
+With a mature estimator held fixed, the simultaneous GNSS + star-tracker outage was extended from 5 to 30 minutes.
 
-🎯 Research Question
-What determines the resilience of autonomous spacecraft navigation when GNSS and star-tracker measurements are simultaneously unavailable?
+<p align="center">
+  <img src="results/figures/phase17_017g_duration_vs_outage_rmse.png" width="800">
+</p>
 
-The completed Phase 17 campaign investigates this question through four linked themes:
+Longer outages systematically increased:
 
-Orbital Geometry → Outage Timing → Estimator Maturity → Outage Duration
+- navigation RMSE,
+- end-of-outage position error,
+- estimator covariance.
 
-and concludes with an empirical maturity-duration resilience envelope.
+---
 
-🧠 System Architecture
+## 🔥 Maturity × Duration Stress Test
+
+Estimator maturity and outage duration were then combined in one controlled stress campaign.
+
+<p align="center">
+  <img src="results/figures/phase17_017h_maturity_duration_rmse.png" width="820">
+</p>
+
+The navigation penalty produced by a prolonged outage was substantially larger when the estimator was immature.
+
+---
+
+## 🗺️ Empirical Resilience Envelope
+
+The completed Phase 17 experiments were finally combined into an empirical maturity-duration degradation map.
+
+<p align="center">
+  <img src="results/figures/phase17_017i_relative_degradation_envelope.png" width="820">
+</p>
+
+The resulting LOW / MODERATE / HIGH regions are relative experimental descriptors.
+
+> They are **not** spacecraft certification limits, flight-safety thresholds, or mission acceptance requirements.
+
+---
+
+# 🔬 Research Motivation
+
+Autonomous spacecraft increasingly depend on multiple sensors and estimation systems to maintain accurate knowledge of their state.
+
+Under nominal conditions, GNSS measurements can constrain spacecraft position and velocity while star-tracker observations support precise attitude estimation.
+
+But spacecraft must also remain operational when measurements become temporarily unavailable.
+
+A simultaneous loss of:
+
+```text
+GNSS
+  +
+Star Tracker
+```
+
+forces the onboard navigation system to rely more heavily on:
+
+```text
+Inertial Propagation
+        +
+Previously Estimated State
+        +
+Estimator Covariance
+        +
+Remaining Sensors
+        +
+Resilience Logic
+```
+
+The key question is therefore not simply:
+
+> **Can the spacecraft continue propagating a navigation solution during sensor loss?**
+
+A more useful research question is:
+
+> **Why are some outages much more damaging than others?**
+
+AURORA investigates this through controlled simulation experiments designed to separate the influence of:
+
+- orbital geometry,
+- orbital phase,
+- outage timing,
+- estimator maturity,
+- outage duration,
+- combined maturity-duration stress.
+
+---
+
+# 🎯 Research Question
+
+> **What determines the resilience of autonomous spacecraft navigation when GNSS and star-tracker measurements are simultaneously unavailable?**
+
+The Phase 17 research sequence is:
+
+```text
+Orbital Geometry
+       ↓
+Orbital Phase
+       ↓
+Outage Timing
+       ↓
+Estimator Maturity
+       ↓
+Controlled Maturity Intervention
+       ↓
+Outage Duration
+       ↓
+Maturity × Duration Stress
+       ↓
+Empirical Resilience Envelope
+```
+
+---
+
+# 🧠 System Architecture
+
+```mermaid
 flowchart TD
 
     A[Orbit / Truth Model] --> B[Sensor Simulation]
@@ -73,6 +201,7 @@ flowchart TD
     B --> F[Star Tracker]
 
     C --> G[GNSS FDIR]
+
     E --> H[Attitude MEKF]
     F --> H
 
@@ -83,219 +212,567 @@ flowchart TD
     H --> K
 
     K --> J
+
     I --> L[Protected Navigation Solution]
     J --> L
 
-    M[Simultaneous GNSS + Star-Tracker Outage] --> C
+    M[GNSS + Star Tracker Outage] --> C
     M --> F
 
-    L --> N[Position / Velocity Error]
-    L --> O[Covariance / Sigma]
-    L --> P[NIS / Consistency Metrics]
-The architecture combines state estimation, sensor validation, fault handling, and resilience management into one reproducible simulation framework.
+    L --> N[Position Error]
+    L --> O[Velocity Error]
+    L --> P[Position Sigma]
+    L --> Q[NIS / Consistency]
+```
 
-🔄 Research Pipeline
-Orbital Dynamics + Sensor Simulation
-                ↓
-GNSS Geometry / Visibility Analysis
-                ↓
-Navigation EKF + Attitude MEKF
-                ↓
-Fault Injection + GNSS FDIR
-                ↓
+The architecture connects:
+
+```text
+Orbital Dynamics
+       ↓
+Sensor Simulation
+       ↓
+Navigation + Attitude Estimation
+       ↓
+Fault Detection
+       ↓
+Resilience Management
+       ↓
+Protected Navigation Solution
+       ↓
+Statistical Validation
+```
+
+---
+
+# 🔄 Research Pipeline
+
+```text
+Spacecraft Orbit Simulation
+            ↓
+GNSS Geometry / Visibility
+            ↓
+GNSS Measurement Simulation
+            ↓
+Navigation EKF
+            ↓
+Gyroscope + Star Tracker MEKF
+            ↓
+Fault Injection
+            ↓
+GNSS FDIR
+            ↓
 Resilience State Management
-                ↓
-Monte Carlo Robustness Campaigns
-                ↓
-Dual-Sensor Outage Experiments
-                ↓
+            ↓
+Full-Mission Monte Carlo
+            ↓
+Robustness Campaign
+            ↓
+Dual-Sensor Outage Research
+            ↓
 Estimator-Maturity Intervention
-                ↓
-Outage-Duration Sweep
-                ↓
-Maturity × Duration Stress Test
-                ↓
+            ↓
+Outage-Duration Stress Testing
+            ↓
 Empirical Resilience Envelope
-🛰️ Phase 17 — Dual-Sensor Outage Resilience
-Phase 17 is the main research campaign of the current repository.
+```
 
-It studies simultaneous loss of:
+---
 
-GNSS
-  +
-Star Tracker
-while the spacecraft continues propagating its navigation and attitude state using the remaining onboard estimation architecture.
+# 🛰️ Phase 17 — Dual-Sensor Outage Resilience
 
-The campaign was intentionally designed as a sequence of increasingly controlled experiments.
+Phase 17 is the main experimental campaign currently documented in AURORA.
 
-017-C — Orbital Phase Sweep
-Question: Does the initial orbital phase materially affect navigation degradation during a fixed 15-minute dual-sensor outage?
+The complete sequence is:
 
-Result
-No statistically significant phase dependence was detected under the tested conditions.
+```text
+017-A  Orbital GNSS Geometry Sweep
+017-B  Representative Orbit Resilience
+017-C  Orbital Phase Sweep
+017-D  Outage Timing Sweep
+017-E  Estimator Maturity Analysis
+017-F  Controlled Estimator Maturity
+017-G  Outage Duration Sweep
+017-H  Maturity × Duration Stress
+017-I  Empirical Resilience Envelope
+```
 
-Friedman p = 0.730727
-Kendall's W = 0.079
-This does not prove orbital phase is universally irrelevant. It means no statistically significant dependence was detected in this specific tested configuration.
+The campaign progressively moves from observational evidence toward controlled experiments.
 
-017-D — Outage Timing Sweep
-Question: Does the mission time at which the outage begins affect resilience?
+---
 
-Result
-Yes.
+# 🌍 017-C — Orbital Phase Sweep
 
-Outage timing produced a strong change in navigation performance:
+### Research Question
 
-Friedman p = 0.000018
-Kendall's W = 0.606
-The best and worst tested outage-start conditions differed by approximately:
+Does initial orbital phase materially change navigation degradation during a fixed simultaneous GNSS + star-tracker outage?
 
-7.6× in mean outage RMSE
-The timing effect could not be explained by PDOP alone.
+The experiment evaluated:
 
-A strong relationship appeared between outage-start estimator uncertainty and navigation degradation.
+```text
+8 orbital phases
+×
+8 stochastic replicates
+=
+64 missions
+```
 
-017-E — Estimator Maturity Mechanism Analysis
-The completed 017-D timing data were re-analyzed without running new missions.
+The outage remained fixed at:
 
-A convergence model fitted to the pre-outage navigation uncertainty produced:
-
-sigma(t) = floor + A * exp(-t / tau)
-
-floor ≈ 0.257 m
-tau   ≈ 34.26 min
-R²    ≈ 0.984
-Estimator uncertainty strongly decreased with mission time and strongly tracked outage degradation.
-
-However, estimator maturity and mission time remained confounded in the observational data.
-
-This motivated a controlled intervention.
-
-017-F — Controlled Estimator Maturity
-The navigation estimator was deliberately activated at different times while the physical outage remained fixed at:
-
+```text
 60–75 min
-Tested estimator ages:
+```
 
-5, 15, 30, 45, 60 min
-<p align="center"> <img src="results/figures/phase17_017f_age_vs_start_sigma.png" width="800"> </p>
+<p align="center">
+  <img src="results/figures/phase17_017c_outage_rmse_vs_phase.png" width="780">
+</p>
 
-Main result
-Mean outage RMSE decreased from approximately:
+### Statistical Result
 
-4.48 m  →  0.80 m
+```text
+Friedman statistic = 4.417
+p-value            = 0.730727
+Kendall's W        = 0.079
+```
+
+No statistically significant dependence of outage RMSE on initial orbital phase was detected under the tested configuration.
+
+This does **not** prove orbital phase is universally irrelevant.
+
+It means no statistically significant phase dependence was detected under these specific experimental conditions.
+
+---
+
+# ⏰ 017-D — Outage Timing Sweep
+
+The same 15-minute outage was moved across mission time.
+
+Tested outage starts:
+
+```text
+15
+30
+45
+60
+75
+90
+105
+120 min
+```
+
+with eight paired stochastic replicates per condition.
+
+<p align="center">
+  <img src="results/figures/phase17_017d_outage_rmse_vs_timing.png" width="780">
+</p>
+
+### Statistical Result
+
+```text
+Friedman statistic = 33.917
+p-value            = 0.000018
+Kendall's W        = 0.606
+```
+
+Outage timing strongly affected navigation degradation.
+
+The best and worst tested conditions differed by approximately:
+
+```text
+7.6×
+```
+
+in mean outage RMSE.
+
+Approximate values:
+
+```text
+15 min start
+≈ 2.31 m outage RMSE
+
+105 min start
+≈ 0.30 m outage RMSE
+```
+
+Pre-outage PDOP did not explain the timing trend.
+
+A much stronger relationship appeared between estimator uncertainty at outage onset and subsequent navigation degradation.
+
+---
+
+# 📈 017-E — Estimator Maturity Analysis
+
+The completed 017-D dataset was re-analyzed without running additional missions.
+
+Estimator uncertainty strongly decreased with mission time:
+
+```text
+Mission time → estimator sigma
+
+Spearman ρ = -0.9214
+p ≈ 0
+```
+
+Mission time also strongly tracked outage degradation:
+
+```text
+Mission time → outage RMSE
+
+Spearman ρ = -0.7605
+p ≈ 0
+```
+
+Estimator uncertainty strongly tracked outage RMSE:
+
+```text
+Estimator sigma → outage RMSE
+
+Spearman ρ = 0.7543
+p ≈ 0
+```
+
+A convergence model was fitted:
+
+```text
+sigma(t) = floor + A exp(-t / tau)
+```
+
+with approximately:
+
+```text
+floor = 0.2573 m
+A     = 0.8770 m
+tau   = 34.26 min
+
+R² = 0.9837
+```
+
+Estimated 90% convergence time:
+
+```text
+≈ 78.9 min
+```
+
+However, estimator maturity and mission time remained strongly confounded.
+
+The observational evidence therefore supported the estimator-maturity hypothesis but could not establish it independently of mission time.
+
+That motivated a controlled intervention.
+
+---
+
+# 🧪 017-F — Controlled Estimator Maturity
+
+Experiment 017-F deliberately changed navigation-estimator activation time while keeping the physical sensor outage fixed.
+
+Fixed outage:
+
+```text
+60–75 min
+```
+
+Estimator ages:
+
+```text
+5
+15
+30
+45
+60 min
+```
+
+Eight paired replicates were evaluated at each age:
+
+```text
+40 missions total
+```
+
+<p align="center">
+  <img src="results/figures/phase17_017f_age_vs_start_sigma.png" width="780">
+</p>
+
+## Mean Outage RMSE
+
+| Estimator Age | Mean Outage RMSE |
+|---:|---:|
+| **5 min** | **4.476 m** |
+| **15 min** | 2.217 m |
+| **30 min** | 1.546 m |
+| **45 min** | 1.240 m |
+| **60 min** | **0.803 m** |
+
+Mean outage RMSE decreased by approximately:
+
+```text
+82%
+```
+
 between the 5-minute and 60-minute estimator-age conditions.
 
-This corresponds to an approximately:
+### Statistical Result
 
-82% reduction
-in mean outage RMSE across the tested maturity range.
+```text
+Outage RMSE
 
-The omnibus maturity effect was statistically significant:
+Friedman statistic = 20.9
+p-value            = 0.000331
+Kendall's W        = 0.653
+```
 
-Friedman p = 0.000331
-Kendall's W = 0.653
-This experiment provides controlled evidence that navigation-estimator maturity materially affects resilience under a fixed dual-sensor outage.
+Estimator maturity also significantly affected:
 
-017-G — Outage Duration Sweep
-A mature estimator was held fixed while outage duration was varied:
+```text
+Outage-start uncertainty
+End-of-outage error
+End-of-outage covariance
+Recovery RMSE
+```
 
-5, 10, 15, 20, 30 min
-Mean outage RMSE
-Outage Duration	Mean RMSE
-5 min	0.396 m
-10 min	0.485 m
-15 min	0.611 m
-20 min	0.781 m
-30 min	1.257 m
-<p align="center"> <img src="results/figures/phase17_017g_duration_vs_outage_rmse.png" width="800"> </p>
+### Interpretation
 
-Longer outages also produced systematic terminal-error and covariance growth.
+The controlled experiment provides evidence that **navigation-estimator maturity materially affects resilience under the same physical dual-sensor outage**.
 
-The duration effect on outage RMSE was statistically significant:
+The intervention changes the maturity of the navigation-estimation / resilience stack rather than covariance alone.
 
-Friedman p = 0.000002
-Kendall's W = 1.000
-Post-recovery RMSE did not show a statistically significant duration dependence in the tested recovery window.
+---
 
-017-H — Maturity × Duration Stress Test
+# ⌛ 017-G — Outage Duration Sweep
+
+Experiment 017-G held estimator maturity approximately fixed and changed outage duration.
+
+Tested durations:
+
+```text
+5
+10
+15
+20
+30 min
+```
+
+Eight paired replicates were evaluated per duration:
+
+```text
+40 missions total
+```
+
+## Mean Results
+
+| Outage Duration | Outage RMSE | End Error | End Sigma |
+|---:|---:|---:|---:|
+| **5 min** | **0.396 m** | **0.458 m** | 0.561 m |
+| **10 min** | 0.485 m | 0.659 m | 0.807 m |
+| **15 min** | 0.611 m | 0.947 m | 1.132 m |
+| **20 min** | 0.781 m | 1.333 m | 1.545 m |
+| **30 min** | **1.257 m** | **2.402 m** | **2.629 m** |
+
+<p align="center">
+  <img src="results/figures/phase17_017g_duration_vs_outage_rmse.png" width="780">
+</p>
+
+### Estimator Covariance Growth
+
+<p align="center">
+  <img src="results/figures/phase17_017g_duration_vs_end_sigma.png" width="780">
+</p>
+
+### Statistical Result
+
+```text
+Outage RMSE
+
+Friedman statistic = 32
+p-value            = 0.000002
+Kendall's W        = 1.000
+```
+
+Longer outages systematically increased:
+
+```text
+Outage RMSE
+End-of-outage error
+End-of-outage covariance
+```
+
+Post-recovery RMSE did not show a statistically significant dependence on outage duration within the tested recovery window.
+
+---
+
+# 🔥 017-H — Maturity × Duration Stress Test
+
 Representative estimator ages:
 
-5, 30, 60 min
+```text
+5
+30
+60 min
+```
+
 were combined with:
 
-15 min
+```text
+15
 30 min
+```
+
 dual-sensor outages.
 
-<p align="center"> <img src="results/figures/phase17_017h_maturity_duration_rmse.png" width="800"> </p>
+Total experiment size:
 
-Main observation
-The penalty associated with a long outage was substantially larger when the navigation estimator was immature.
+```text
+3 estimator ages
+×
+2 outage durations
+×
+8 replicates
+=
+48 missions
+```
 
-For outage RMSE, the maturity-dependent duration penalty was statistically significant:
+<p align="center">
+  <img src="results/figures/phase17_017h_maturity_duration_rmse.png" width="820">
+</p>
 
-Friedman p = 0.011109
-Kendall's W = 0.562
-A corresponding interaction diagnostic was also detected for covariance growth.
+## Mean Outage RMSE
 
-The terminal-error interaction diagnostic was not statistically significant, so the result is not interpreted as a universal interaction across all metrics.
+| Estimator Age | 15 min outage | 30 min outage |
+|---:|---:|---:|
+| **5 min** | 2.773 m | **5.667 m** |
+| **30 min** | 1.291 m | 2.624 m |
+| **60 min** | **0.599 m** | **1.006 m** |
 
-017-I — Empirical Resilience Envelope
-The completed 017-F, 017-G, and 017-H campaigns were combined without running additional missions.
+The penalty produced by extending the outage from 15 to 30 minutes was approximately:
 
-<p align="center"> <img src="results/figures/phase17_017i_relative_degradation_envelope.png" width="850"> </p>
+```text
+5 min estimator age:
++2.894 m RMSE
 
-The reference condition is:
+30 min estimator age:
++1.334 m RMSE
 
-Estimator age:    60 min
-Outage duration:   5 min
-Outage RMSE:     0.396 m
-End error:       0.458 m
-Relative degradation bands:
+60 min estimator age:
++0.407 m RMSE
+```
 
-Band	Definition
-🟢 LOW	≤ 2× reference
-🟡 MODERATE	> 2× and ≤ 5× reference
-🔴 HIGH	> 5× reference
-Boundary conditions in the tested domain
-Lowest tested degradation
+### Interaction Diagnostic
 
-Estimator age:    60 min
-Outage duration:   5 min
+For outage RMSE:
+
+```text
+Friedman statistic = 9
+p-value            = 0.011109
+Kendall's W        = 0.562
+```
+
+The result supports the interpretation that estimator maturity moderates the effect of prolonged sensor loss on navigation RMSE.
+
+A related maturity-dependent effect was also observed for covariance growth.
+
+The terminal-error interaction diagnostic was not statistically significant, so this interaction is not generalized to every metric.
+
+---
+
+# 🗺️ 017-I — Empirical Resilience Envelope
+
+Experiment 017-I required no new spacecraft simulations.
+
+Completed results from:
+
+```text
+017-F
+017-G
+017-H
+```
+
+were combined into an empirical maturity-duration degradation envelope.
+
+<p align="center">
+  <img src="results/figures/phase17_017i_relative_degradation_envelope.png" width="820">
+</p>
+
+Reference condition:
+
+```text
+Estimator age:     60 min
+Outage duration:    5 min
+
 Outage RMSE:      0.396 m
 End error:        0.458 m
-Highest tested degradation
+```
 
-Estimator age:     5 min
-Outage duration:  30 min
-Outage RMSE:      5.667 m
-End error:       10.482 m
-These bands are empirical research descriptors only. They are not flight-safety thresholds, certification limits, or mission acceptance criteria.
+## Relative Degradation Bands
 
-📊 Phase 17 Results at a Glance
-Experiment	Main Variable	Key Finding
-017-C	Orbital phase	No statistically significant dependence detected
-017-D	Outage start time	Strong timing dependence
-017-E	Estimator convergence	Strong observational consistency with maturity mechanism
-017-F	Estimator age	Controlled maturity effect on resilience
-017-G	Outage duration	Longer outages increase degradation
-017-H	Maturity × duration	Immaturity amplifies long-outage RMSE and covariance penalties
-017-I	Combined evidence	Empirical resilience envelope
-📐 Core Metrics
-AURORA evaluates resilience through complementary navigation, estimation, geometry, and recovery metrics:
+| Band | Definition |
+|---|---:|
+| 🟢 **LOW** | ≤ 2× reference |
+| 🟡 **MODERATE** | > 2× and ≤ 5× reference |
+| 🔴 **HIGH** | > 5× reference |
 
-Metric	Purpose
-Outage Position RMSE	Navigation accuracy during sensor loss
-End-of-Outage Error	Terminal degradation at reacquisition
-Position Sigma	Estimated navigation uncertainty
-Recovery RMSE	Post-outage recovery quality
-NIS	Innovation consistency
-PDOP	GNSS geometry quality
-Visible Satellites	Measurement availability
-Attitude Error	MEKF attitude-estimation quality
-🧩 Repository Structure
+---
+
+## 🟢 Lowest Tested Degradation
+
+```text
+Estimator age:     60 min
+Outage duration:    5 min
+
+Outage RMSE:      0.396 m
+End error:        0.458 m
+```
+
+---
+
+## 🔴 Highest Tested Degradation
+
+```text
+Estimator age:      5 min
+Outage duration:   30 min
+
+Outage RMSE:       5.667 m
+End error:        10.482 m
+```
+
+Within the tested domain, estimator immaturity can produce a larger degradation penalty than outage duration alone.
+
+> The LOW / MODERATE / HIGH categories are empirical research descriptors only.
+
+---
+
+# 📊 Phase 17 Results at a Glance
+
+| Experiment | Main Variable | Main Finding |
+|---|---|---|
+| **017-C** | Orbital phase | No statistically significant dependence detected |
+| **017-D** | Outage timing | Strong timing dependence |
+| **017-E** | Estimator convergence | Strong observational consistency with maturity |
+| **017-F** | Estimator maturity | Controlled maturity effect |
+| **017-G** | Outage duration | Longer outages increase degradation |
+| **017-H** | Maturity × duration | Immaturity amplifies prolonged-outage penalties |
+| **017-I** | Combined evidence | Empirical resilience envelope |
+
+---
+
+# 📐 Core Navigation and Resilience Metrics
+
+| Metric | Purpose |
+|---|---|
+| **Outage Position RMSE** | Navigation accuracy during sensor loss |
+| **Outage-Start Error** | Navigation state at outage onset |
+| **End-of-Outage Error** | Navigation degradation before reacquisition |
+| **Position Sigma** | EKF-estimated navigation uncertainty |
+| **Recovery RMSE** | Navigation accuracy after sensor recovery |
+| **NIS** | Innovation consistency |
+| **PDOP** | GNSS geometry quality |
+| **Visible Satellites** | GNSS measurement availability |
+| **Attitude Error** | Attitude-estimation performance |
+
+---
+
+# 🧩 Repository Structure
+
+```text
 AURORA/
+│
 ├── data/
 │   ├── phase15/
 │   ├── phase16/
@@ -304,12 +781,21 @@ AURORA/
 ├── docs/
 │   ├── PHASE17_RESULTS.md
 │   ├── REPRODUCIBILITY.md
+│   ├── project_definition.md
 │   ├── requirements/
 │   └── verification/
 │
 ├── experiments/
 │   ├── experiment_001b_orbit_validation.py
 │   ├── ...
+│   ├── experiment_015a_ai_dataset_features.py
+│   ├── ...
+│   ├── experiment_016d_sensitivity_analysis.py
+│   ├── experiment_017a_orbit_gnss_geometry_sweep.py
+│   ├── experiment_017b_representative_orbit_resilience.py
+│   ├── experiment_017c_dual_outage_phase_sweep.py
+│   ├── experiment_017d_outage_timing_sweep.py
+│   ├── experiment_017e_estimator_maturity.py
 │   ├── experiment_017f_controlled_estimator_maturity.py
 │   ├── experiment_017g_outage_duration_sweep.py
 │   ├── experiment_017h_combined_stress.py
@@ -318,6 +804,8 @@ AURORA/
 ├── results/
 │   ├── figures/
 │   └── tables/
+│
+├── simulations/
 │
 ├── src/
 │   ├── ai/
@@ -329,159 +817,297 @@ AURORA/
 │   └── validation/
 │
 ├── tests/
+│
 ├── CITATION.cff
 ├── CONTRIBUTING.md
 ├── requirements.txt
 └── README.md
-⚙️ Installation
+```
+
+---
+
+# ⚙️ Installation
+
 Clone the repository:
 
+```bash
 git clone https://github.com/SabrinaBenghename/Autonomous-Uncertainty-aware-Resilient-Orbital-Reconfiguration-Architecture-for-Navigation.git
-Enter the repository:
+```
 
+Enter the project:
+
+```bash
 cd Autonomous-Uncertainty-aware-Resilient-Orbital-Reconfiguration-Architecture-for-Navigation
+```
+
 Create a virtual environment:
 
+```bash
 python -m venv .venv
-On Windows:
+```
 
+Activate it on Windows:
+
+```powershell
 .venv\Scripts\activate
+```
+
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
-▶️ Reproduce the Final Research Campaign
-Run the controlled estimator-maturity experiment:
+```
 
+---
+
+# ▶️ Reproduce the Final Phase 17 Campaign
+
+### Controlled estimator maturity
+
+```bash
 python -m experiments.experiment_017f_controlled_estimator_maturity
-Run the outage-duration sweep:
+```
 
+### Outage duration sweep
+
+```bash
 python -m experiments.experiment_017g_outage_duration_sweep
-Run the combined stress experiment:
+```
 
+### Combined maturity × duration stress
+
+```bash
 python -m experiments.experiment_017h_combined_stress
-Build the empirical resilience envelope:
+```
 
+### Empirical resilience envelope
+
+```bash
 python -m experiments.experiment_017i_resilience_envelope
-Detailed reproducibility notes are provided in:
+```
 
+Detailed reproducibility information is available in:
+
+```text
 docs/REPRODUCIBILITY.md
-🧰 Technology Stack
+```
 
+---
 
+# 🧰 Technology Stack
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-Scientific%20Computing-blue">
+  <img src="https://img.shields.io/badge/NumPy-Numerical%20Methods-4D77CF">
+  <img src="https://img.shields.io/badge/SciPy-Statistics-8CAAE6">
+  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-150458">
+  <img src="https://img.shields.io/badge/Matplotlib-Visualization-orange">
+  <img src="https://img.shields.io/badge/EKF-Navigation-purple">
+  <img src="https://img.shields.io/badge/MEKF-Attitude-purple">
+  <img src="https://img.shields.io/badge/FDIR-Resilience-red">
+</p>
 
+### Scientific Computing
 
-
-
-
-
-Core technologies
-
+```text
 Python
-
 NumPy
-
 SciPy
-
 Pandas
-
 Matplotlib
+```
 
-Extended Kalman Filtering
+### Navigation and Estimation
 
-Multiplicative EKF attitude estimation
+```text
+Extended Kalman Filter
+Multiplicative Extended Kalman Filter
+GNSS Positioning
+Inertial Propagation
+Quaternion Attitude Estimation
+Covariance Analysis
+Innovation Consistency Analysis
+```
 
-Orbital dynamics
+### Spacecraft Simulation
 
-GNSS simulation
+```text
+Orbital Dynamics
+Orbital Elements
+Reference Frames
+Perturbation Models
+GNSS Constellation Geometry
+Sensor Simulation
+```
 
-Fault detection and isolation
+### Resilience
 
-Monte Carlo experimentation
+```text
+Fault Injection
+Fault Detection and Isolation
+Sensor Validation
+Resilience State Management
+Protected Navigation Updates
+```
 
-Statistical hypothesis testing
+### Experimental Validation
 
-⚠️ Scientific Scope and Limitations
-AURORA is a simulation-based research platform, not a flight-qualified navigation system.
+```text
+Monte Carlo Simulation
+Paired Experimental Designs
+Friedman Tests
+Wilcoxon Tests
+Spearman Correlation
+Partial Correlation
+Convergence Modelling
+Sensitivity Analysis
+```
+
+---
+
+# ⚠️ Scientific Scope and Limitations
+
+AURORA is currently a **simulation-based research platform**.
+
+It is not presented as a flight-qualified spacecraft navigation system.
 
 Current limitations include:
 
-finite Monte Carlo replicate counts,
+- finite Monte Carlo replicate counts,
+- finite tested outage-duration range,
+- simulator-defined sensor models,
+- no hardware-in-the-loop validation yet,
+- no mission-specific absolute navigation acceptance threshold,
+- no flight-software qualification,
+- no spacecraft certification claims,
+- the controlled estimator-start intervention also resets associated resilience-manager history,
+- the attitude MEKF remains active before navigation-estimator activation during the controlled maturity experiment.
 
-a finite tested outage-duration domain,
+The empirical resilience envelope therefore describes behavior only within the tested experimental domain.
 
-no hardware-in-the-loop validation,
+---
 
-no mission-specific absolute navigation acceptance threshold,
+# 🔭 Future Research Directions
 
-no flight-software certification,
-
-simulator-defined GNSS, IMU, gyro, and star-tracker models,
-
-the controlled estimator-start intervention also resets associated resilience-manager history,
-
-the attitude MEKF remains active before navigation-estimator activation in the controlled maturity experiment.
-
-These limitations are retained explicitly in the interpretation of the results.
-
-🔭 Future Research Directions
 Potential extensions include:
 
-hardware-in-the-loop testing,
+- hardware-in-the-loop experiments,
+- mission-specific integrity requirements,
+- expanded outage-duration domains,
+- higher-fidelity spacecraft sensor-error models,
+- multi-sensor fault combinations,
+- adaptive autonomous reconfiguration,
+- alternative navigation estimators,
+- fault-tolerant sensor fusion,
+- formal integrity monitoring,
+- flight-software-oriented implementation,
+- real-time embedded deployment,
+- mission-specific navigation requirements.
 
-mission-specific integrity requirements,
+---
 
-wider outage-duration domains,
+# 📄 Research Paper
 
-more detailed spacecraft sensor-error models,
+The completed AURORA experimental campaign is being consolidated into a formal research-style report.
 
-autonomous reconfiguration policies,
+Planned structure:
 
-multi-sensor fault combinations,
-
-flight-software-oriented implementation,
-
-comparison with alternative estimators,
-
-formal integrity and availability analysis.
-
-📄 Research Paper
-The current GitHub repository is being consolidated into a research-style report based on the completed experimental evidence.
-
-Planned sections include:
-
+```text
 Abstract
-Introduction
-Related Work
-AURORA System Architecture
-Orbital and Sensor Models
-Navigation and Attitude Estimation
-FDIR and Resilience Management
-Experimental Methodology
-Phase 17A–E Observational Analysis
-Phase 17F Controlled Maturity Intervention
-Phase 17G Outage-Duration Sweep
-Phase 17H Combined Stress Experiment
-Phase 17I Empirical Resilience Envelope
-Discussion
-Limitations
-Conclusion
-🧭 Project Philosophy
-AURORA was not built only to demonstrate that a simulated spacecraft can continue propagating a state estimate during sensor loss.
 
-It was built to investigate why some outages are much more damaging than others.
+1. Introduction
+
+2. Related Work
+
+3. AURORA System Architecture
+
+4. Orbital Dynamics and Sensor Models
+
+5. Navigation Estimation
+
+6. Attitude Estimation
+
+7. FDIR and Resilience Management
+
+8. Experimental Methodology
+
+9. Orbital Geometry Analysis
+
+10. Outage Phase and Timing Analysis
+
+11. Estimator Maturity Mechanism
+
+12. Controlled Maturity Intervention
+
+13. Outage Duration Analysis
+
+14. Combined Maturity × Duration Stress
+
+15. Empirical Resilience Envelope
+
+16. Discussion
+
+17. Limitations
+
+18. Conclusion
+```
+
+---
+
+# 🧭 Project Philosophy
+
+AURORA was not developed only to demonstrate that a simulated spacecraft can continue propagating a navigation state during sensor loss.
+
+It was developed to investigate:
+
+> **Why can the same external sensor failure produce dramatically different navigation outcomes?**
 
 The project therefore focuses on three questions:
 
-How uncertain is the estimator when the outage begins?
+> **How uncertain is the navigation estimator when the outage begins?**
 
-How long must the system operate without absolute navigation and attitude updates?
+> **How long must the spacecraft operate without absolute navigation and attitude updates?**
 
-How does that internal estimator state change the severity of the same external sensor failure?
+> **How does the estimator's internal state influence the severity of an external sensor failure?**
 
-The completed Phase 17 campaign suggests that resilience is not determined by outage duration alone.
+The completed Phase 17 experiments indicate that resilience is not determined by outage duration alone.
 
-Within the tested domain, estimator maturity can be as important as — and in some cases more important than — the duration of sensor loss itself.
+Within the tested experimental domain:
 
-⭐ AURORA
-Resilient navigation. Controlled degradation. Interpretable autonomy.
+> **Estimator maturity can be as important as — and in some conditions more important than — the duration of sensor loss itself.**
+
+---
+
+# 📚 Citation
+
+Citation metadata is provided in:
+
+```text
+CITATION.cff
+```
+
+The citation file should contain the final author identity, repository URL, project version, and selected software license before public release.
+
+---
+
+# 📄 License
+
+A final software license has not yet been selected.
+
+Until a license is explicitly added, the repository should not be interpreted as granting unrestricted reuse rights.
+
+---
+
+<h2 align="center">⭐ AURORA</h2>
+
+<h3 align="center">
+Autonomous Uncertainty-aware Resilient Orbital Reconfiguration Architecture for Navigation
+</h3>
+
+<p align="center">
+  <b>Resilient navigation. Controlled degradation. Interpretable autonomy.</b>
+</p>
+
+<p align="center">
+🛰️
+</p>
