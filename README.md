@@ -866,40 +866,6 @@ pip install -r requirements.txt
 
 ---
 
-# ▶️ Reproduce the Final Phase 17 Campaign
-
-### Controlled estimator maturity
-
-```bash
-python -m experiments.experiment_017f_controlled_estimator_maturity
-```
-
-### Outage duration sweep
-
-```bash
-python -m experiments.experiment_017g_outage_duration_sweep
-```
-
-### Combined maturity × duration stress
-
-```bash
-python -m experiments.experiment_017h_combined_stress
-```
-
-### Empirical resilience envelope
-
-```bash
-python -m experiments.experiment_017i_resilience_envelope
-```
-
-Detailed reproducibility information is available in:
-
-```text
-docs/REPRODUCIBILITY.md
-```
-
----
-
 # 🧰 Technology Stack
 
 <p align="center">
@@ -978,27 +944,6 @@ Sensitivity Analysis
 
 ---
 
-# ⚠️ Scientific Scope and Limitations
-
-AURORA is currently a **simulation-based research platform**.
-
-It is not presented as a flight-qualified spacecraft navigation system.
-
-Current limitations include:
-
-- finite Monte Carlo replicate counts,
-- finite tested outage-duration range,
-- simulator-defined sensor models,
-- no hardware-in-the-loop validation yet,
-- no mission-specific absolute navigation acceptance threshold,
-- no flight-software qualification,
-- no spacecraft certification claims,
-- the controlled estimator-start intervention also resets associated resilience-manager history,
-- the attitude MEKF remains active before navigation-estimator activation during the controlled maturity experiment.
-
-The empirical resilience envelope therefore describes behavior only within the tested experimental domain.
-
----
 
 # 🔭 Future Research Directions
 
@@ -1023,49 +968,7 @@ Potential extensions include:
 
 The completed AURORA experimental campaign is being consolidated into a formal research-style report.
 
-Planned structure:
 
-```text
-Abstract
-
-1. Introduction
-
-2. Related Work
-
-3. AURORA System Architecture
-
-4. Orbital Dynamics and Sensor Models
-
-5. Navigation Estimation
-
-6. Attitude Estimation
-
-7. FDIR and Resilience Management
-
-8. Experimental Methodology
-
-9. Orbital Geometry Analysis
-
-10. Outage Phase and Timing Analysis
-
-11. Estimator Maturity Mechanism
-
-12. Controlled Maturity Intervention
-
-13. Outage Duration Analysis
-
-14. Combined Maturity × Duration Stress
-
-15. Empirical Resilience Envelope
-
-16. Discussion
-
-17. Limitations
-
-18. Conclusion
-```
-
----
 
 # 🧭 Project Philosophy
 
@@ -1088,26 +991,6 @@ The completed Phase 17 experiments indicate that resilience is not determined by
 Within the tested experimental domain:
 
 > **Estimator maturity can be as important as — and in some conditions more important than — the duration of sensor loss itself.**
-
----
-
-# 📚 Citation
-
-Citation metadata is provided in:
-
-```text
-CITATION.cff
-```
-
-The citation file should contain the final author identity, repository URL, project version, and selected software license before public release.
-
----
-
-# 📄 License
-
-A final software license has not yet been selected.
-
-Until a license is explicitly added, the repository should not be interpreted as granting unrestricted reuse rights.
 
 ---
 
