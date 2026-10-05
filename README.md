@@ -39,6 +39,10 @@ AURORA is a simulation-based spacecraft navigation research platform integrating
 
 # 🎥 Research Highlights
 
+# 📄 Research Paper
+
+The completed AURORA experimental campaign is being consolidated into a formal research-style report.
+
 ## 🧪 Controlled Estimator-Maturity Experiment
 
 A central result of AURORA is that the same physical sensor outage can produce very different navigation errors depending on how mature the navigation estimator is when the outage begins.
@@ -964,9 +968,7 @@ Potential extensions include:
 
 ---
 
-# 📄 Research Paper
 
-The completed AURORA experimental campaign is being consolidated into a formal research-style report.
 
 
 
