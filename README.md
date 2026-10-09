@@ -42,6 +42,8 @@ AURORA is a simulation-based spacecraft navigation research platform integrating
 # 📄 Research Paper
 
 The completed AURORA experimental campaign is being consolidated into a formal research-style report.
+[📄 **Open the AURORA Research Paper**](AURORA_PAPER.pdf)
+
 
 ## 🧪 Controlled Estimator-Maturity Experiment
 
